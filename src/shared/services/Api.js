@@ -6,7 +6,7 @@ const instance = axios.create({
 });
 
 export const fetchTrending = async () => {
-  const { data } = await instance.get('trending/all/day', {
+  const { data } = await instance.get('trending/all/week', {
     params: { page: 1 },
   });
   return data;
@@ -19,7 +19,7 @@ export const fetchByQuery = async query => {
   return data;
 };
 
-export const fetchGenres = async () => {
-  const { data } = await instance.get('genre/movie/list');
+export const fetchMovieDetailsById = async id => {
+  const { data } = await instance.get(`movie/${id}`);
   return data;
 };
