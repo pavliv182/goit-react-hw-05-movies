@@ -34,4 +34,4 @@ export const fetchMovieReviews = async id => {
   return data;
 };
 
-export default instance;
+// export default instance;

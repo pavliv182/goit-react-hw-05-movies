@@ -1,6 +1,6 @@
 import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { fetchMovieDetailsById } from 'shared/services/API';
+import { fetchMovieDetailsById } from 'shared/services/api';
 import css from './movieDetailsPage.module.css';
 
 function MovieDetailsPage() {
