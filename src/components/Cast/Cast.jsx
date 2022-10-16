@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 // import { fetchMovieCast } from '../../shared/services/API';
-import instance from '../../shared/services/API';
+import instance from 'shared/services/API';
 
 import CastItem from './CastItem';
 
