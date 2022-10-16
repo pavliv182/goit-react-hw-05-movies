@@ -10,7 +10,7 @@ function NotFoundPage() {
       <button onClick={goBack} className={css.goBack} type="button">
         Go back
       </button>
-      <h1>Зачем ты это делаешь? </h1>;
+      <h1>Не понятная страница </h1>;
     </>
   );
 }
