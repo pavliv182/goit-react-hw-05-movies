@@ -4,6 +4,8 @@ import Header from 'components/Header';
 import HomePage from 'pages/HomePage';
 import SearchPage from 'pages/SearchPage';
 import MovieDetailsPage from 'pages/MovieDetailsPage';
+import Cast from 'components/Cast';
+import Reviews from 'components/Reviews';
 
 export const App = () => {
   // fetchTrending().then(data => console.log(data));
@@ -15,7 +17,12 @@ export const App = () => {
       <Routes>
         <Route path="/home" element={<HomePage />} />
         <Route path="/movies" element={<SearchPage />} />
-        <Route path="/movies/:id" element={<MovieDetailsPage />} />
+        <Route path="/movies/:id" element={<MovieDetailsPage />}>
+          <Route path="cast" element={<Cast />}></Route>
+          <Route path="reviews" element={<Reviews />}></Route>
+        </Route>
+        <Route></Route>
+        <Route />
       </Routes>
     </>
   );

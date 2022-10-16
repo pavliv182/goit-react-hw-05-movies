@@ -18,7 +18,7 @@ function MovieDetailsPage() {
 
   const { id } = useParams();
 
-  const imgURL = 'https://image.tmdb.org/t/p/w500';
+  const imgURL = 'https://image.tmdb.org/t/p/w500/';
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,7 +35,7 @@ function MovieDetailsPage() {
     const fetchOneMovieDetails = async () => {
       try {
         const data = await fetchMovieDetailsById(id);
-        console.log(data);
+        // console.log(data);
         setData(prev => ({
           ...prev,
           loading: false,
@@ -66,52 +66,75 @@ function MovieDetailsPage() {
     overview,
     genres,
   } = movies;
+
+  const normalizedDate = release_date?.slice(0, 4) || null;
+  const normalizedVoteAverage = (vote_average * 10).toFixed();
+
   return (
     <>
       {loading && <p>...Loading</p>}
       <button onClick={goBack} className={css.goBack} type="button">
         Go back
       </button>
-      <div className={css.wrapper}>
-        <img
-          className={css.img}
-          src={imgURL + poster_path || backdrop_path}
-          alt={title || name}
-        />
-        <div className={css.about}>
-          <h2>{title || name}</h2>
-          <span>{release_date}</span>
-          <p className={css.score}>{vote_average}</p>
-          <h3>Overview</h3>
-          <p className={css.overview}>{overview}</p>
-          <h3 className={css.genresTitle}>Genres</h3>
-          <p>
-            {genres &&
-              genres.map(e => (
-                <span className={css.genresItem} key={e.id}>
-                  {e.name}
-                </span>
-              ))}
-          </p>
-        </div>
-      </div>
-      <div className={css.links}>
-        <h3 className={css.info}>Aditional information</h3>
-        <Link state={{ from }} className={css.link} to={`/movies/${id}/cast`}>
-          Cast
-        </Link>
-        <Link
-          state={{ from }}
-          className={css.link}
-          to={`/movies/${id}/reviews`}
-        >
-          Reviews
-        </Link>
-      </div>
-      <div className="">
-        <Outlet />
-      </div>
-      {error && <p>{error}</p>}
+      {!error && (
+        <>
+          <div className={css.wrapper}>
+            {poster_path ? (
+              <img
+                className={css.img}
+                src={imgURL + poster_path}
+                alt={title || name}
+              />
+            ) : (
+              <img
+                className={css.img}
+                src={imgURL + backdrop_path}
+                alt={title || name}
+              />
+            )}
+
+            <div className={css.about}>
+              <h2>
+                {title || name}({normalizedDate})
+              </h2>
+
+              <p className={css.score}>User score: {normalizedVoteAverage}%</p>
+              <h3>Overview</h3>
+              <p className={css.overview}>{overview}</p>
+              <h3 className={css.genresTitle}>Genres</h3>
+              <p>
+                {genres &&
+                  genres.map(e => (
+                    <span className={css.genresItem} key={e.id}>
+                      {e.name}
+                    </span>
+                  ))}
+              </p>
+            </div>
+          </div>
+          <div className={css.links}>
+            <h3 className={css.info}>Aditional information</h3>
+            <Link
+              state={{ from }}
+              className={css.link}
+              to={`/movies/${id}/cast`}
+            >
+              Cast
+            </Link>
+            <Link
+              state={{ from }}
+              className={css.link}
+              to={`/movies/${id}/reviews`}
+            >
+              Reviews
+            </Link>
+          </div>
+          <div className="">
+            <Outlet />
+          </div>
+        </>
+      )}
+      {error && <h1>No movie information</h1>}
     </>
   );
 }
