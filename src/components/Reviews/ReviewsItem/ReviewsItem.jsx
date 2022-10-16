@@ -1,4 +1,5 @@
 import css from './reviewsItem.module.css';
+import PropTypes from 'prop-types';
 
 function ReviewsItem({ data }) {
   const elements = data.map(e => (
@@ -11,3 +12,17 @@ function ReviewsItem({ data }) {
 }
 
 export default ReviewsItem;
+
+ReviewsItem.dafaultProps = {
+  data: [],
+};
+
+ReviewsItem.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ),
+};

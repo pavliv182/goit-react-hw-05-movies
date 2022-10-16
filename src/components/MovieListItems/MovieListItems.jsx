@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function MovieListItems({ data }) {
   const elements = data.map(e => (
@@ -10,3 +11,17 @@ function MovieListItems({ data }) {
 }
 
 export default MovieListItems;
+
+MovieListItems.dafaultProps = {
+  data: [],
+};
+
+MovieListItems.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
+};

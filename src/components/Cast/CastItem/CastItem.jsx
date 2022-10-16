@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function CastItem({ data }) {
   const imgURL = 'https://image.tmdb.org/t/p/w500';
   const elements = data.map(e => (
@@ -11,3 +13,19 @@ function CastItem({ data }) {
 }
 
 export default CastItem;
+
+CastItem.dafaultProps = {
+  data: [],
+};
+
+CastItem.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      profile_path: PropTypes.string,
+      name: PropTypes.string.isRequired,
+      original_name: PropTypes.string.isRequired,
+      character: PropTypes.string.isRequired,
+    })
+  ),
+};
