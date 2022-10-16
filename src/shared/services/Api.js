@@ -33,3 +33,5 @@ export const fetchMovieReviews = async id => {
   const { data } = await instance.get(`movie/${id}/reviews`);
   return data;
 };
+
+export default instance;

@@ -1,8 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { fetchMovieCast } from '../../shared/services/API';
+// import { fetchMovieCast } from '../../shared/services/API';
+import instance from '../../shared/services/API';
 
 import CastItem from './CastItem';
+
+export const fetchMovieCast = async id => {
+  const { data } = await instance.get(`movie/${id}/credits`);
+  return data;
+};
 
 function Cast() {
   const [data, setData] = useState({
