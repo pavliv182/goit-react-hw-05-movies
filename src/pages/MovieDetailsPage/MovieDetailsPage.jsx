@@ -46,9 +46,6 @@ function MovieDetailsPage() {
     fetchOneMovieDetails();
   }, [id]);
 
-  // fetchMovieDetailsById('94997').then(a => console.log(a));
-  //   console.log(id);
-
   const { loading, error, movies } = data;
   const {
     poster_path,
