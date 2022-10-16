@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import * as API from 'shared/services/api';
+import { fetchMovieCast } from 'api';
 // import instance from 'shared/services/api';
 
 import CastItem from './CastItem';
@@ -27,7 +27,7 @@ function Cast() {
 
     const fetchCast = async () => {
       try {
-        const data = await API.fetchMovieCast(id);
+        const data = await fetchMovieCast(id);
         // console.log(data);
         setData(prev => ({
           ...prev,

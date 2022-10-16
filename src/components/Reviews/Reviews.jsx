@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { fetchMovieReviews } from 'shared/services/api.js';
+import { fetchMovieReviews } from 'api.js';
 
 import ReviewsItem from './ReviewsItem';
 

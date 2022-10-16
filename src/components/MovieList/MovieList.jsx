@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchTrending } from 'shared/services/api';
+import { fetchTrending } from 'api';
 import MovieListItems from '../MovieListItems';
 
 function MovieList() {

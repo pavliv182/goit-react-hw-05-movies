@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SearchForm from 'components/SearchForm';
-import { fetchByQuery } from 'shared/services/api';
+import { fetchByQuery } from 'api';
 import MovieListItems from 'components/MovieListItems';
 
 function SearchPage() {
