@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchMovieCast } from 'shared/services/API';
-import css from './cast.module.css';
+
 import CastItem from './CastItem';
 
 function Cast() {
@@ -22,7 +22,7 @@ function Cast() {
     const fetchCast = async () => {
       try {
         const data = await fetchMovieCast(id);
-        console.log(data);
+        // console.log(data);
         setData(prev => ({
           ...prev,
           loading: false,

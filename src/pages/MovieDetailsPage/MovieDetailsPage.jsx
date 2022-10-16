@@ -1,10 +1,4 @@
-import {
-  Link,
-  Outlet,
-  useParams,
-  useNavigate,
-  useLocation,
-} from 'react-router-dom';
+import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchMovieDetailsById } from 'shared/services/API';
 import css from './movieDetailsPage.module.css';
@@ -21,10 +15,10 @@ function MovieDetailsPage() {
   const imgURL = 'https://image.tmdb.org/t/p/w500/';
 
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
 
-  const from = location?.state?.from || '/home';
-  const goBack = () => navigate(from);
+  const goBack = () => navigate('/movies');
+  // console.log(from);
 
   useEffect(() => {
     setData(prev => ({
@@ -114,22 +108,14 @@ function MovieDetailsPage() {
           </div>
           <div className={css.links}>
             <h3 className={css.info}>Aditional information</h3>
-            <Link
-              state={{ from }}
-              className={css.link}
-              to={`/movies/${id}/cast`}
-            >
+            <Link className={css.link} to={`/movies/${id}/cast`}>
               Cast
             </Link>
-            <Link
-              state={{ from }}
-              className={css.link}
-              to={`/movies/${id}/reviews`}
-            >
+            <Link className={css.link} to={`/movies/${id}/reviews`}>
               Reviews
             </Link>
           </div>
-          <div className="">
+          <div>
             <Outlet />
           </div>
         </>

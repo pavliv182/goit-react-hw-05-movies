@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchMovieReviews } from 'shared/services/API';
-import css from './reviews.module.css';
+
 import ReviewsItem from './ReviewsItem';
 
 function Reviews() {
@@ -22,7 +22,7 @@ function Reviews() {
     const fetchReviews = async () => {
       try {
         const data = await fetchMovieReviews(id);
-        console.log(data);
+        // console.log(data);
 
         setData(prev => ({
           ...prev,
