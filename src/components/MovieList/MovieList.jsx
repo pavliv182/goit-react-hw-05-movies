@@ -1,47 +1,27 @@
-import { useState, useEffect } from 'react';
-import { fetchTrending } from 'api';
-import MovieListItems from '../MovieListItems';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function MovieList() {
-  const [data, setData] = useState({
-    movies: [],
-    loading: false,
-    error: null,
-  });
-  useEffect(() => {
-    setData(prev => ({
-      ...prev,
-      loading: true,
-    }));
-
-    const onFirstLoad = async () => {
-      try {
-        const data = await fetchTrending();
-        setData(prev => ({
-          ...prev,
-          loading: false,
-          movies: data.results,
-        }));
-      } catch (error) {
-        setData(prev => ({
-          ...prev,
-          loading: false,
-          error: error.message,
-        }));
-      }
-    };
-    onFirstLoad();
-  }, []);
-
-  const { loading, error, movies } = data;
-
-  return (
-    <>
-      {loading && <p>...Loading</p>}
-      <MovieListItems data={movies} />
-      {error && <p>{error}</p>}
-    </>
-  );
+function MovieList({ data }) {
+  const elements = data.map(e => (
+    <li key={e.id}>
+      <Link to={`/movies/${e.id}`}>{e.title || e.name}</Link>
+    </li>
+  ));
+  return <ul>{elements}</ul>;
 }
 
 export default MovieList;
+
+MovieList.dafaultProps = {
+  data: [],
+};
+
+MovieList.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
+};

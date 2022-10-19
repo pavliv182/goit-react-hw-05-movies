@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SearchForm from 'components/SearchForm';
 import { fetchByQuery } from 'api';
-import MovieListItems from 'components/MovieListItems';
+import MovieList from 'components/MovieList';
 
 function SearchPage() {
   const [state, setState] = useState({
@@ -49,7 +49,7 @@ function SearchPage() {
   return (
     <div>
       <SearchForm formSubmit={onSubmit} />
-      <MovieListItems data={state.data} />
+      <MovieList data={state.data} />
     </div>
   );
 }
