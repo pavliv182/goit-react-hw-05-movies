@@ -10,6 +10,15 @@
 // const MovieDetailsPage = lazy(() => import('pages/MovieDetailsPage'));
 // const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
+// // const Header = () => lazy(() => import('components/Header'));
+// // const Cast = () => lazy(() => import('components/Cast'));
+// // const Reviews = () => lazy(() => import('components/Reviews'));
+
+// // const HomePage = () => lazy(() => import('pages/HomePage'));
+// // const SearchPage = () => lazy(() => import('pages/SearchPage'));
+// // const MovieDetailsPage = () => lazy(() => import('pages/MovieDetailsPage'));
+// // const NotFoundPage = () => lazy(() => import('pages/NotFoundPage'));
+
 // export const App = () => {
 //   return (
 //     <>
