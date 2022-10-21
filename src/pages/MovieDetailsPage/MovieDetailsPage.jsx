@@ -1,4 +1,10 @@
-import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
+import {
+  Link,
+  Outlet,
+  useParams,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchMovieDetailsById } from 'api';
 import css from './movieDetailsPage.module.css';
@@ -15,9 +21,11 @@ function MovieDetailsPage() {
   const imgURL = 'https://image.tmdb.org/t/p/w500/';
 
   const navigate = useNavigate();
-  // const location = useLocation();
+  const location = useLocation();
+  const from = location?.state?.from || '/';
+  console.log(from);
 
-  const goBack = () => navigate('/movies');
+  const goBack = () => navigate(from);
   // console.log(from);
 
   useEffect(() => {
