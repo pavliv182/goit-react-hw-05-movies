@@ -11,7 +11,7 @@ function Header() {
       <nav>
         <ul className={css.navlist}>
           <li>
-            <NavLink className={getActiveLink} to="/home">
+            <NavLink className={getActiveLink} to="/">
               Home
             </NavLink>
           </li>

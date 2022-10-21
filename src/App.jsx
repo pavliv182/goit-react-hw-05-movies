@@ -49,10 +49,10 @@ import NotFoundPage from 'components/NotFoundPage';
 export const App = () => {
   return (
     <>
-      <Header path="/index" />
+      <Header />
       {/* <Suspense fallback={<p>...Loading</p>}> */}
       <Routes>
-        <Route path="/index" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<SearchPage />} />
         <Route path="/movies/:id" element={<MovieDetailsPage />}>
           <Route path="cast" element={<Cast />} />
