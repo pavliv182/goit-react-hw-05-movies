@@ -1,9 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import css from './header.module.css';
 
-// const getActiveLink = ({ isActive }) => {
-//   return isActive ? `${css.link} ${css.active}` : `${css.link}`;
-// };
 const getActiveLink = ({ isActive }) => {
   return isActive ? `${css.link} ${css.active}` : `${css.link}`;
 };
